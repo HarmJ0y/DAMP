@@ -141,7 +141,7 @@ computer account hash and local account hashes.
     ForEach ($Computer in $ComputerName) {
 
         $WmiArguments = @{
-            'ComputerName' = $ComputerName
+            'ComputerName' = $Computer
         }
         if ($PSBoundParameters['Credential']) { $WmiArguments['Credential'] = $Credential }
 
