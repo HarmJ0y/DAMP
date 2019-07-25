@@ -928,13 +928,13 @@ Used to decrypt LSA secret with temp key.
 
         [Parameter()]
         [Byte[]]
-        $IV = @(0) * 16
+        $InitializationVector = @(0) * 16
     )
 
     $AES = New-Object System.Security.Cryptography.AesCryptoServiceProvider
     $AES.Mode = "CBC"
     $AES.Key = $Key
-    $AES.IV = $IV
+    $AES.IV = $InitializationVector
     $AES.Padding = [System.Security.Cryptography.PaddingMode]::Zeros
     ($AES.CreateDecryptor()).TransformFinalBlock($CipherText, 0, $CipherText.Length)
 }
@@ -960,7 +960,7 @@ Used to decrypt LSA secret with temp key.
 
         [Parameter()]
         [Byte[]]
-        $IV = @(0) * 16,
+        $InitializationVector = @(0) * 16,
 
         [Parameter()]
         [String]
@@ -969,7 +969,7 @@ Used to decrypt LSA secret with temp key.
 
     $AES = New-Object System.Security.Cryptography.RijndaelManaged
     $AES.Key = $Key 
-    $AES.IV = $IV
+    $AES.IV = $InitializationVector
     $AES.Mode = [System.Security.Cryptography.CipherMode]::CBC
     $AES.Padding = [System.Security.Cryptography.PaddingMode]::$PaddingMode
     $AES.BlockSize = 128
