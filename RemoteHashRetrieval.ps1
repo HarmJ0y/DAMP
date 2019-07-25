@@ -1720,7 +1720,7 @@ http://moyix.blogspot.com/2008/02/decrypting-lsa-secrets.html
                 }
                 [Array]::Copy($Temp, $CipherText, $Temp.Length)
 
-                $CachePlaintext = Decrypt-Bytes -Key $NLKMKey[0..15] -CipherText $CipherText -IV $CH
+                $CachePlaintext = Decrypt-Bytes -Key $NLKMKey[0..15] -CipherText $CipherText -InitializationVector $CH
 
                 # first 16 bytes of the decrypted result are the username
                 $MsCacheV2 = ([System.BitConverter]::ToString($CachePlaintext[0..15]) -replace '-','').ToLower()
